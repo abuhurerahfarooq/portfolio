@@ -1,0 +1,647 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abu Hurerah — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #000;
+      --bg-2: #111;
+      --text: #f5f5f5;
+      --muted: #cfcfcf;
+      --card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #fff;
+      --accent-strong: #000;
+      --radius: 12px;
+    }
+
+    :root.light {
+      --bg-1: #fafafa;
+      --bg-2: #ffffff;
+      --text: #0b0b0b;
+      --muted: #444;
+      --card: #f6f6f6;
+      --border: #e6e6e6;
+      --accent: #000;
+      --accent-strong: #fff;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 36px 20px
+    }
+
+    header.site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border)
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--accent-strong);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 18px
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 18px
+    }
+
+    .brand p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    nav.main-nav {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .nav-link {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.06)
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: var(--accent-strong);
+      font-weight: 600
+    }
+
+    .btn.icon-only {
+      width: 40px;
+      height: 40px;
+      padding: 0
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      margin-top: 22px;
+      align-items: start
+    }
+
+    .hero-card {
+      padding: 22px;
+      border-radius: 14px;
+      background: var(--card);
+      border: 1px solid var(--border)
+    }
+
+    .intro h2 {
+      margin: 0 0 6px 0;
+      font-size: 28px
+    }
+
+    .intro p.lead {
+      margin: 0 0 12px 0;
+      color: var(--muted)
+    }
+
+    .skills {
+      display: grid;
+      gap: 12px
+    }
+
+    .skill {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: transparent
+    }
+
+    .skill .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .skill .meta .name {
+      font-weight: 600
+    }
+
+    .skill .desc {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .skill-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--border);
+      overflow: hidden
+    }
+
+    .skill-bar>i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent-strong), var(--accent));
+      transition: width .9s cubic-bezier(.2, .9, .2, 1)
+    }
+
+    section {
+      margin-top: 22px
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .timeline-item {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card)
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px
+    }
+
+    .project {
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .project .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .case {
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card)
+    }
+
+    .why {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px
+    }
+
+    .card-why {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card)
+    }
+
+    footer.site-footer {
+      margin-top: 28px;
+      padding: 12px;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeIn .6s forwards
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @media(max-width:980px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .container {
+        padding: 18px
+      }
+    }
+
+    @media(max-width:540px) {
+      .projects-grid {
+        grid-template-columns: 1fr
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="container">
+    <header class="site-header fade-in" role="banner">
+      <div class="brand">
+        <div class="logo" aria-hidden>AH</div>
+        <div>
+          <h1>Abu Hurerah</h1>
+          <p>Senior Software Engineer • Computer Engineer</p>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="#about"><i class="fa-solid fa-user"></i> About</a>
+        <a class="nav-link" href="#skills"><i class="fa-solid fa-code"></i> Skills</a>
+        <a class="nav-link" href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a class="nav-link" href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+        <a class="nav-link" href="#case-studies"><i class="fa-solid fa-lightbulb"></i> Case Studies</a>
+        <a class="nav-link" href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <div class="controls">
+          <button id="downloadResume" class="btn icon-only" title="Download Resume"><i
+              class="fa-solid fa-file-arrow-down"></i></button>
+          <button id="themeToggle" class="btn icon-only" aria-pressed="false" title="Toggle light / dark"><i
+              class="fa-solid fa-circle-half-stroke"></i></button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <article class="hero-card intro fade-in" id="about" aria-labelledby="intro-title">
+          <h2 id="intro-title">Hi — I'm Abu Hurerah</h2>
+          <p class="lead">Computer Engineer & Software Developer focused on backend systems, mobile apps and automation.
+            I build products that scale, reduce costs and increase revenue.</p>
+
+          <p style="color:var(--muted);margin:10px 0">Quick facts: <strong class="kpi">3+</strong> years experience •
+            <strong class="kpi">7+</strong> apps delivered • Worked with teams and clients across Pakistan.</p>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            <a class="btn primary" href="mailto:abuhurerahfarooq@gmail.com">Email Me</a>
+            <a class="btn" href="#projects">See Projects</a>
+            <a class="btn" href="https://github.com/abuhurerahfarooq" target="_blank"><i
+                class="fa-brands fa-github"></i>&nbsp;Github</a>
+          </div>
+
+          <div style="margin-top:14px">
+            <h4 style="margin:0 0 8px 0">Core strengths</h4>
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <li>API design & performance tuning (Node.js, Postgres)</li>
+              <li>Cross-platform apps (Flutter) with payment & push integrations</li>
+              <li>Automations and scripts (Python) for reliable operations</li>
+            </ul>
+          </div>
+        </article>
+
+        <aside class="hero-card skills fade-in" id="skills" aria-labelledby="skills-title">
+          <h3 id="skills-title">Skills Overview</h3>
+
+          <div class="skill" data-level="90">
+            <div class="meta">
+              <div class="name"><i class="fa-brands fa-node-js"></i>&nbsp; Node.js / APIs</div>
+              <div class="percent">90%</div>
+            </div>
+            <div class="desc">High-performance backends, database optimization, API design & testing</div>
+            <div class="skill-bar"><i style="width:0%"></i></div>
+          </div>
+
+          <div class="skill" data-level="85">
+            <div class="meta">
+              <div class="name"><i class="fa-brands fa-google"></i>&nbsp; Flutter / Dart</div>
+              <div class="percent">85%</div>
+            </div>
+            <div class="desc">Modern UI, state management, Firebase and payment integration</div>
+            <div class="skill-bar"><i style="width:0%"></i></div>
+          </div>
+
+          <div class="skill" data-level="80">
+            <div class="meta">
+              <div class="name"><i class="fa-brands fa-microsoft"></i>&nbsp; C# / .NET</div>
+              <div class="percent">80%</div>
+            </div>
+            <div class="desc">Desktop & enterprise apps, EF, and structured architectures</div>
+            <div class="skill-bar"><i style="width:0%"></i></div>
+          </div>
+
+          <div class="skill" data-level="70">
+            <div class="meta">
+              <div class="name"><i class="fa-brands fa-python"></i>&nbsp; Python / ML</div>
+              <div class="percent">70%</div>
+            </div>
+            <div class="desc">Automation, data processing and simple predictive models</div>
+            <div class="skill-bar"><i style="width:0%"></i></div>
+          </div>
+
+          <p style="margin-top:12px;color:var(--muted);font-size:13px">Tip: percentages represent practical proficiency,
+            not years — I use the right tool per problem.</p>
+        </aside>
+      </section>
+
+      <section id="experience" class="grid-2 fade-in" aria-labelledby="exp-title">
+        <div>
+          <div class="hero-card">
+            <h3 id="exp-title">Experience</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>SimpliTaught — Software Engineer</strong>
+                <div style="color:var(--muted);font-size:13px">Sep 2023 — Present • Lahore</div>
+                <p style="margin:8px 0;color:var(--muted)">Designed and implemented APIs serving 10,000+ students.
+                  Reduced average response time from ~800ms to ~150ms through query tuning and Redis caching. Integrated
+                  Stripe & subscription flow increasing successful payment rate.</p>
+              </div>
+
+              <div class="timeline-item">
+                <strong>Freelancer — Mobile App Developer</strong>
+                <div style="color:var(--muted);font-size:13px">Jan 2023 — Aug 2023 • Remote</div>
+                <p style="margin:8px 0;color:var(--muted)">Delivered 7 Flutter apps (e-commerce, learning, chat).
+                  Focused on performance, secure auth and push notifications. Clients reported +25% engagement
+                  post-launch.</p>
+              </div>
+
+              <div class="timeline-item">
+                <strong>GhairMulki Software House — Intern</strong>
+                <div style="color:var(--muted);font-size:13px">Nov 2022 — Jan 2023 • Multan</div>
+                <p style="margin:8px 0;color:var(--muted)">Worked on API integration, UI fixes and QA reducing crashes
+                  by ~15% in a sprint.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="hero-card">
+            <h3>Why hire me</h3>
+            <div class="why">
+              <div class="card-why"><strong>Problem-first</strong>
+                <div style="color:var(--muted);font-size:13px">I start with metrics and user impact, not technology for
+                  tech's sake.</div>
+              </div>
+              <div class="card-why"><strong>Ship fast</strong>
+                <div style="color:var(--muted);font-size:13px">Fast iterations with tests and CI — production-ready
+                  features quickly.</div>
+              </div>
+              <div class="card-why"><strong>System thinker</strong>
+                <div style="color:var(--muted);font-size:13px">Design reliable systems with observability and safety in
+                  mind.</div>
+              </div>
+              <div class="card-why"><strong>Great teammate</strong>
+                <div style="color:var(--muted);font-size:13px">Clear code, clear PRs, and clear communication.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="hero-card">
+            <h3>Achievements</h3>
+            <ul style="margin:6px 0;padding-left:18px;color:var(--muted)">
+              <li>Huawei ICT Competition — National Level participant (2022).</li>
+              <li>Led final year project "Smart E-Learning Platform" — University innovation award.</li>
+              <li>Delivered production features within 2 weeks of joining SimpliTaught.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="fade-in">
+        <h3>Projects — Detailed</h3>
+        <div class="projects-grid">
+
+          <article class="project" aria-labelledby="p1">
+            <h4 id="p1">Learning Platform APIs</h4>
+            <div class="meta">
+              <div class="kpi">10k+ users</div>
+              <div class="kpi">Response time: 150ms</div>
+            </div>
+            <p class="features">Built scalable RESTful APIs for a multi-tenant learning platform. Responsibilities:
+              schema design, query optimization, caching (Redis), pagination, authentication, and monitoring.</p>
+            <p style="margin:0;color:var(--muted)"><strong>Impact:</strong> Reduced average response time from ~800ms to
+              ~150ms and lowered DB cost by optimizing heavy joins and adding read replicas.</p>
+            <p style="margin:6px 0;font-size:13px;color:var(--muted)"><strong>Tech:</strong> <i
+                class="fa-brands fa-node-js"></i> Node.js • <i class="fa-solid fa-database"></i> PostgreSQL • <i
+                class="fa-brands fa-redis"></i> Redis • Docker</p>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a class="btn" href="#" aria-label="View repo"><i class="fa-brands fa-github"></i>&nbsp; View repo</a>
+              <a class="btn" href="#" aria-label="Live demo"><i class="fa-solid fa-globe"></i>&nbsp; Live demo</a>
+            </div>
+          </article>
+
+          <article class="project" aria-labelledby="p2">
+            <h4 id="p2">Mobile Commerce App</h4>
+            <div class="meta">
+              <div class="kpi">+25% sales</div>
+              <div class="kpi">7k MAU</div>
+            </div>
+            <p class="features">Flutter app for local vendors with maps, push notifications, and Stripe payments. I
+              implemented secure checkout, inventory sync, and progressive enhancements for slow networks.</p>
+            <p style="margin:0;color:var(--muted)"><strong>Impact:</strong> Vendors reported 25% increase in sales in
+              first 3 months after launch.</p>
+            <p style="margin:6px 0;font-size:13px;color:var(--muted)"><strong>Tech:</strong> <i
+                class="fa-brands fa-google"></i> Flutter • Firebase • <i class="fa-solid fa-credit-card"></i> Stripe</p>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a class="btn" href="#" aria-label="View repo"><i class="fa-brands fa-github"></i>&nbsp; View repo</a>
+              <a class="btn" href="#" aria-label="Play store"><i class="fa-brands fa-google-play"></i>&nbsp; Play
+                store</a>
+            </div>
+          </article>
+
+          <article class="project" aria-labelledby="p3">
+            <h4 id="p3">Automation & Sync Scripts</h4>
+            <div class="meta">
+              <div class="kpi">-60% manual work</div>
+              <div class="kpi">Daily backups</div>
+            </div>
+            <p class="features">Python scripts and cron jobs for DB backups, third-party API syncs and reporting
+              pipelines. Added logging, retry logic and alerts for failures.</p>
+            <p style="margin:0;color:var(--muted)"><strong>Impact:</strong> Reduced manual maintenance time by ~60% and
+              improved data freshness for analytics.</p>
+            <p style="margin:6px 0;font-size:13px;color:var(--muted)"><strong>Tech:</strong> <i
+                class="fa-brands fa-python"></i> Python • Bash • AWS S3</p>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a class="btn" href="#" aria-label="View scripts"><i class="fa-brands fa-github"></i>&nbsp; View
+                scripts</a>
+            </div>
+          </article>
+
+          <article class="project" aria-labelledby="p4">
+            <h4 id="p4">Smart E-Learning Platform (Capstone)</h4>
+            <div class="meta">
+              <div class="kpi">University award</div>
+              <div class="kpi">Adaptive quizzes</div>
+            </div>
+            <p class="features">Full-stack platform with adaptive learning paths and real-time quizzes. I led the team
+              and implemented core API and frontend components.</p>
+            <p style="margin:0;color:var(--muted)"><strong>Impact:</strong> Won university innovation award and used by
+              200+ students during pilot semester.</p>
+            <p style="margin:6px 0;font-size:13px;color:var(--muted)"><strong>Tech:</strong> <i
+                class="fa-brands fa-node-js"></i> Node.js • <i class="fa-brands fa-react"></i> React • PostgreSQL</p>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a class="btn" href="#" aria-label="Project writeup"><i class="fa-solid fa-file-lines"></i>&nbsp;
+                Writeup</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="case-studies" class="fade-in">
+        <h3>Case Studies</h3>
+
+        <div class="case" style="margin-top:12px">
+          <h4>Learning Platform — Case Study</h4>
+          <p style="color:var(--muted);margin:6px 0"><strong>Problem:</strong> Slow queries causing timeouts for peak
+            traffic, high DB costs.</p>
+          <p style="color:var(--muted);margin:6px 0"><strong>Approach:</strong> Analyzed slow queries, added proper
+            indexes, introduced Redis caching, paginated heavy endpoints and used read replicas for analytics workloads.
+          </p>
+          <p style="color:var(--muted);margin:6px 0"><strong>Outcome:</strong> Response time reduced from ~800ms to
+            ~150ms, increased uptime during peak, and lower DB CPU usage — measurable cost savings.</p>
+        </div>
+
+        <div class="case" style="margin-top:12px">
+          <h4>Mobile Commerce — Case Study</h4>
+          <p style="color:var(--muted);margin:6px 0"><strong>Problem:</strong> Checkout failures and poor performance on
+            low-end devices.</p>
+          <p style="color:var(--muted);margin:6px 0"><strong>Approach:</strong> Implemented robust payment flows,
+            optimized image delivery, implemented offline-first patterns and background sync.</p>
+          <p style="color:var(--muted);margin:6px 0"><strong>Outcome:</strong> Reduced checkout errors, improved
+            performance and vendor sales rose by 25% in 3 months.</p>
+        </div>
+      </section>
+
+      <section id="contact" class="fade-in">
+        <h3>Contact & Next Steps</h3>
+        <p style="color:var(--muted)">Phone: <a href="tel:+923316081902">+92-331-6081902</a> • Email: <a
+            href="mailto:abuhurerahfarooq@gmail.com">abuhurerahfarooq@gmail.com</a></p>
+        <p style="color:var(--muted)">Links: <a href="https://github.com/abuhurerahfarooq" target="_blank">Github</a> •
+          <a href="https://www.linkedin.com/in/abuhurerahfarooq/" target="_blank">LinkedIn</a></p>
+
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="mailto:abuhurerahfarooq@gmail.com">Hire / Interview</a>
+          <button id="downloadBtn" class="btn" title="Download resume">Download resume (PDF)</button>
+        </div>
+
+        <p style="color:var(--muted);margin-top:10px;font-size:13px">Note: Links to repos/demos are placeholders — tell
+          me which repos you want linked and I will update them.</p>
+      </section>
+
+    </main>
+
+    <footer class="site-footer fade-in">
+      <div>©
+        <script>document.write(new Date().getFullYear())</script> Abu Hurerah
+      </div>
+      <div>Built with clarity • Designed for hiring</div>
+    </footer>
+
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    function applyTheme(saved) {
+      if (saved === 'light') document.documentElement.classList.add('light');
+      else document.documentElement.classList.remove('light');
+      themeToggle.setAttribute('aria-pressed', document.documentElement.classList.contains('light'));
+    }
+    const theme = localStorage.getItem('portfolio_theme') || 'dark';
+    applyTheme(theme);
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light');
+      localStorage.setItem('portfolio_theme', isLight ? 'light' : 'dark');
+      themeToggle.setAttribute('aria-pressed', isLight);
+    });
+  </script>
+</body>
+
+</html>
